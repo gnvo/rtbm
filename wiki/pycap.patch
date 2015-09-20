@@ -1,0 +1,15 @@
+diff pypcap-read-only/pcap.pyx pypcap-read-only.mine/pcap.pyx
+77a78
+>     int     pcap_setdirection(pcap_t *p, int direction)
+353a355,361
+>     def setdirection(self, direction):
+>         """Set the direction in which this handle will capture."""
+>         ret = pcap_setdirection(self.__pcap, direction)
+>         if ret == -1:
+>             raise OSError, pcap_geterr(self.__pcap)
+>         return ret
+> 
+370c378
+<                 return None
+---
+>                 return (None, None)
